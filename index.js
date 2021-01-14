@@ -9,9 +9,7 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, 'build'));
-});
+
 
 db.connect()
 .then(()=>{
@@ -22,6 +20,14 @@ db.connect()
 })
 app.use('/posts', postRoutes(db));
 app.use('/users', userRoutes(db));
+
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, 'build'));
+});
+
+app.get('*', (req, res) => {                       
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));                               
+});
 
 app.use(cors())
 
