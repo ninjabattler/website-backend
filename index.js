@@ -18,7 +18,7 @@ db.connect()
 .catch((err) => {
   console.log(err)
 })
-app.use('/posts', postRoutes(db));
+app.use('/postData', postRoutes(db));
 app.use('/users', userRoutes(db));
 
 app.get("/", function (req, res) {
@@ -33,5 +33,5 @@ app.use(cors())
 
 app.listen(5000, () => {
   console.log("server has started on port 5000");
-
+  queries.createDb(db)
 })
