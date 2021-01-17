@@ -13,6 +13,12 @@ module.exports = (database) => {
     res.send(posts)
   })
 
+  router.get('/comments', async (req, res) => {
+    const posts = await queries.selectPostComments(database, {postId: req.query.postId})
+
+    res.send(posts)
+  })
+
   router.get('/:review', async (req, res) => {
 
     const splitReview = req.params.review.split('_')

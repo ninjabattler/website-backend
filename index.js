@@ -12,9 +12,6 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, 'build'));
 });
-app.get("/posts", function (req, res) {
-  res.redirect('https://www.youtube.com/watch?v=rcEuKhKj6LM')
-});
 app.get("/about", function (req, res) {
   res.redirect('https://www.youtube.com/watch/dQw4w9WgXcQ')
 });
@@ -33,5 +30,4 @@ app.use(cors())
 
 app.listen(5000, () => {
   console.log("server has started on port 5000");
-
 })

@@ -9,7 +9,7 @@ const findCreateUser = async (db, options = { ip: '' }) => {
     if (user.rows.length === 0) {
       const newUser = await db.query(`
         INSERT INTO users(ip, username, avatar)
-        VALUES($1, $2, '')
+        VALUES($1, $2, ${Math.ceil(Math.random() * 4)})
         RETURNING ${'*'};
       `, [options.ip, encrypt(options.ip)])
 
