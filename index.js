@@ -9,13 +9,6 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, 'build'));
-});
-app.get("/about", function (req, res) {
-  res.redirect('https://www.youtube.com/watch/dQw4w9WgXcQ')
-});
-
 db.connect()
 .then(()=>{
   console.log('YO')
@@ -25,6 +18,13 @@ db.connect()
 })
 app.use('/postData', postRoutes(db));
 app.use('/users', userRoutes(db));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+app.get("/about", function (req, res) {
+  res.redirect('https://www.youtube.com/watch/dQw4w9WgXcQ')
+});
 
 app.use(cors())
 
