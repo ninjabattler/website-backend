@@ -7,7 +7,8 @@ const insertNewLike = async (db, options = { liked: true, userId: 0, postId: 0 }
     `, [options.userId, options.postId]);
 
     if (deletedLike.rows[0]) {
-      if (deletedLike.rows[0].liked === options.liked) {
+      console.log(deletedLike.rows[0].liked, options.liked)
+      if ((deletedLike.rows[0].liked === true && options.liked === 'false')  || (deletedLike.rows[0].liked === false && options.liked === 'true')) {
         const newLike = await db.query(`
           INSERT INTO likes(liked, user_id, post_id)
           VALUES($1, $2, $3)
