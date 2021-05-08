@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.20d1dc48.chunk.css",
-    "main.js": "/static/js/main.741efe10.chunk.js",
-    "main.js.map": "/static/js/main.741efe10.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.45a2565d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.45a2565d.js.map",
-    "static/js/2.3e1fe281.chunk.js": "/static/js/2.3e1fe281.chunk.js",
-    "static/js/2.3e1fe281.chunk.js.map": "/static/js/2.3e1fe281.chunk.js.map",
-    "static/js/3.039d65a7.chunk.js": "/static/js/3.039d65a7.chunk.js",
-    "static/js/3.039d65a7.chunk.js.map": "/static/js/3.039d65a7.chunk.js.map",
+    "main.css": "/static/css/main.d0280f23.chunk.css",
+    "main.js": "/static/js/main.b4d82f63.chunk.js",
+    "main.js.map": "/static/js/main.b4d82f63.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.963242bd.js",
+    "runtime-main.js.map": "/static/js/runtime-main.963242bd.js.map",
+    "static/js/2.7eeae322.chunk.js": "/static/js/2.7eeae322.chunk.js",
+    "static/js/2.7eeae322.chunk.js.map": "/static/js/2.7eeae322.chunk.js.map",
+    "static/js/3.71013e85.chunk.js": "/static/js/3.71013e85.chunk.js",
+    "static/js/3.71013e85.chunk.js.map": "/static/js/3.71013e85.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.20d1dc48.chunk.css.map": "/static/css/main.20d1dc48.chunk.css.map",
-    "static/js/2.3e1fe281.chunk.js.LICENSE.txt": "/static/js/2.3e1fe281.chunk.js.LICENSE.txt",
-    "static/media/Banner.3d10c4ef.png": "/static/media/Banner.3d10c4ef.png",
+    "static/css/main.d0280f23.chunk.css.map": "/static/css/main.d0280f23.chunk.css.map",
+    "static/js/2.7eeae322.chunk.js.LICENSE.txt": "/static/js/2.7eeae322.chunk.js.LICENSE.txt",
+    "static/media/Banner.b0ea5a96.png": "/static/media/Banner.b0ea5a96.png",
     "static/media/Mask 1.1cdcaaa1.png": "/static/media/Mask 1.1cdcaaa1.png",
     "static/media/Mask 2.f8350acc.png": "/static/media/Mask 2.f8350acc.png",
     "static/media/Mask 3.67d64c39.png": "/static/media/Mask 3.67d64c39.png",
@@ -23,9 +23,9 @@
     "static/media/shuriken.e82fb564.svg": "/static/media/shuriken.e82fb564.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.45a2565d.js",
-    "static/js/2.3e1fe281.chunk.js",
-    "static/css/main.20d1dc48.chunk.css",
-    "static/js/main.741efe10.chunk.js"
+    "static/js/runtime-main.963242bd.js",
+    "static/js/2.7eeae322.chunk.js",
+    "static/css/main.d0280f23.chunk.css",
+    "static/js/main.b4d82f63.chunk.js"
   ]
 }
