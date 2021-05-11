@@ -13,6 +13,12 @@ module.exports = (database) => {
     res.send(posts)
   })
 
+  router.get('/articles', async (req, res) => {
+    const articles = await queries.selectAllArticles(database)
+
+    res.send(articles)
+  })
+
   router.get('/comments', async (req, res) => {
     const posts = await queries.selectPostComments(database, {postId: req.query.postId})
 
