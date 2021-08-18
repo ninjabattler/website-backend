@@ -28,6 +28,12 @@ module.exports = (database) => {
     res.send(comment.rows[0])
   })
 
+  router.post('/userId', async (req, res) => {
+    const user = await queries.findCreateUser(database, { ip: req.query.ip })
+    console.log(user)
+    res.send({userId: user.rows[0].id})
+  })
+
   return router;
 
 }

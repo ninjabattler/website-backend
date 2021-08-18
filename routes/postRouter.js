@@ -10,6 +10,12 @@ module.exports = (database) => {
   router.get('/', async (req, res) => {
     const posts = await queries.selectAllPosts(database)
 
+    for(const row of posts.rows) {
+      const comments = await queries.selectPostComments(database, {postId: row.id})
+
+      row.comments = comments.rows
+    }
+
     res.send(posts)
   })
 
