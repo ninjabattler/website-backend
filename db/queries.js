@@ -4,6 +4,7 @@ const selectAllPosts = require('./queries/selects/selectAllPosts');
 const selectAllArticles = require('./queries/selects/selectAllArticles');
 const selectUserLike = require('./queries/selects/selectUserLike');
 const selectPostComments = require('./queries/selects/selectPostComments');
+const selectArticleMetadata = require('./queries/selects/selectArticleMetadata');
 const insertNewPost = require('./queries/inserts/insertNewPost');
 const insertNewLike = require('./queries/inserts/insertNewLike');
 const insertNewComment = require('./queries/inserts/insertNewComment');
@@ -16,6 +17,7 @@ module.exports = {
   selectAllArticles,
   selectUserLike,
   selectPostComments,
+  selectArticleMetadata,
   insertNewPost,
   insertNewLike,
   insertNewComment,

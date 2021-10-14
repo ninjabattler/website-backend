@@ -2,6 +2,8 @@ const express = require('express');
 const queries = require('../db/queries');
 const router = express.Router();
 const cors = require('cors');
+const headers = require('../middleware/headersMiddleware');
+const metaData = require('../middleware/metaDataMiddleware');
 
 module.exports = (database) => {
 
@@ -31,7 +33,7 @@ module.exports = (database) => {
     res.send(posts)
   })
 
-  router.get('/:review', async (req, res) => {
+  router.get('/:review', headers, metaData, async (req, res) => {
 
     const splitReview = req.params.review.split('_')
     let formattedReview = '';
@@ -41,7 +43,10 @@ module.exports = (database) => {
 
     formattedReview = formattedReview.slice(0, -1);
     const post = await queries.selectSinglePost(database, {title: formattedReview})
-    res.send(post)
+    res.send({
+      meta: req.args.meta,
+      post: post
+    })
   })
 
   return router;
