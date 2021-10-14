@@ -33,7 +33,7 @@ module.exports = (database) => {
     res.send(posts)
   })
 
-  router.get('/:review', headers, metaData, async (req, res) => {
+  router.get('/:review', metaData, async (req, res) => {
 
     const splitReview = req.params.review.split('_')
     let formattedReview = '';
