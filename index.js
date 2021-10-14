@@ -6,6 +6,76 @@ const queries = require('./db/queries');
 const postRoutes = require('./routes/postRouter');
 const userRoutes = require('./routes/userRouter');
 const path = require('path');
+const fs = require('fs')
+
+const defaultMetadata = `
+<title>Ninjabattler</title>
+<meta name='description' content="Website by a lunatic who knows a little node js and not much else" />
+<meta property='og:locale' content='en_CA' />
+<meta name='theme-color' content="#FFFF00" />
+<meta property='og:type' content='website' />
+<meta property='og:title' content="Ninjabattler" />
+<meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
+`
+
+const pathToIndex = path.join(__dirname, "build/index.html")
+app.get("/", (req, res) => {
+  const raw = fs.readFileSync(pathToIndex, {'encoding': 'utf8'})
+  const updated = raw.replace("_META_", defaultMetadata)
+
+  res.send(updated)
+})
+
+app.get("/articles", (req, res) => {
+  const raw = fs.readFileSync(pathToIndex, {'encoding': 'utf8'})
+  const updated = raw.replace("_META_", defaultMetadata.replace(/(?<=<title>)Ninjabattler/, 'Ninjabattler - Articles'))
+
+  res.send(updated)
+})
+
+app.get("/posts", (req, res) => {
+  const raw = fs.readFileSync(pathToIndex, {'encoding': 'utf8'})
+  const updated = raw.replace("_META_", defaultMetadata.replace(/(?<=<title>)Ninjabattler/, 'Ninjabattler - Posts'))
+
+  res.send(updated)
+})
+
+app.get("/about", (req, res) => {
+  const raw = fs.readFileSync(pathToIndex, {'encoding': 'utf8'})
+  const updated = raw.replace("_META_", defaultMetadata.replace(/(?<=<title>)Ninjabattler/, 'Ninjabattler - About'))
+
+  res.send(updated)
+})
+
+app.get("/posts/:review", (req, res) => {
+
+  const splitReview = req.params.review.split('_')
+  let formattedReview = '';
+  splitReview.forEach((review) => {
+    formattedReview += review + " "
+  })
+
+  formattedReview = formattedReview.slice(0, -1);
+  
+  queries.selectArticleMetadata(db, {title: formattedReview})
+  .then((metaData) => {
+    const raw = fs.readFileSync(pathToIndex, {'encoding': 'utf8'})
+    const updated = raw.replace("_META_", `
+    <meta charSet="utf-8" />
+    <title>Ninjabattler - ${metaData.rows[0].title}</title>
+    <meta name='description' content="Some words written by Ninjabattler" />
+    <meta property='og:locale' content='en_CA' />
+    <meta property='og:author' content='Ninjabattler' />
+    <meta name='theme-color' content=${metaData.rows[0].colour} />
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content=${metaData.rows[0].title} />
+    <meta property='og:image' content=${metaData.rows[0].thumbnail} />
+    <meta property='og:url' content="https://ninjabattler.ca/posts/${req.params.review}"" />
+    `)
+  
+    res.send(updated)
+  })
+})
 
 app.use(express.static(path.join(__dirname, 'build')))
 
@@ -26,10 +96,7 @@ app.use(function(req, res, next) {
 });
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-app.get("/about", function (req, res) {
-  res.redirect('https://www.youtube.com/watch/dQw4w9WgXcQ')
+  res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
 app.use(cors())
