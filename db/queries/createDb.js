@@ -17,7 +17,8 @@ const createDb = async (db) => {
         content TEXT,
         category VARCHAR(255),
         genre VARCHAR(255),
-        narration VARCHAR(255)
+        narration VARCHAR(255),
+        decription TEXT
       );
 
       CREATE TABLE users (
